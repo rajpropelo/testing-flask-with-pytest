@@ -1,15 +1,16 @@
 import pytest
 import json
 from api import app
+import time
 
-def test_index_route():
+def test_index_route_6():
     response = app.test_client().get('/')
 
     assert response.status_code == 200
     assert response.data.decode('utf-8') == 'Testing, Flask!'
 
 @pytest.mark.get_request
-def test_get_all_books():
+def test_get_all_books_6():
     response = app.test_client().get('/bookapi/books')
 
     res = json.loads(response.data.decode('utf-8')).get("Books")
@@ -22,7 +23,7 @@ def test_get_all_books():
 
 
 @pytest.mark.get_request
-def test_get_book_by_id():
+def test_get_book_by_id_6():
     response = app.test_client().get('/bookapi/books/1')
     res = json.loads(response.data.decode('utf-8')).get("Book")
     print(res)
